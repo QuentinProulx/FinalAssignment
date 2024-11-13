@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>FinalAssignment2</artifactId>
+    <artifactId>CreditCard</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
