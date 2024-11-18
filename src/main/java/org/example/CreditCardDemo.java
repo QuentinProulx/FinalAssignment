@@ -70,10 +70,14 @@ class CreditCard{
         return owner.toString();
     }
     public void charge(Money amount){
-        balance.add(amount);
+        if (balance.add(amount).compareTo(creditLimit) <= 0) {
+            balance = balance.add(amount);
+        } else {
+            System.out.println("Exceeds credit limit");
+        }
     }
     public void payment(Money amount){
-        balance.subtract(amount);
+        balance = balance.subtract(amount);
     }
 
 }
