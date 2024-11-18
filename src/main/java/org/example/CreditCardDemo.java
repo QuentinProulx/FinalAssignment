@@ -52,11 +52,12 @@ class CreditCard{
 
     private Person owner = null;
     private Money creditLimit = null;
-    private Money balance = new Money(0);
+    private Money balance = null;
 
-    CreditCard(Person owner,Money creditLimit){
+    CreditCard(Person owner, Money creditLimit){
         this.owner = owner;
         this.creditLimit = creditLimit;
+        this.balance = new Money(0);
     }
 
     public Money getBalance(){
@@ -69,10 +70,10 @@ class CreditCard{
         return owner.toString();
     }
     public void charge(Money amount){
-
+        balance.add(amount);
     }
     public void payment(Money amount){
-
+        balance.subtract(amount);
     }
 
 }
