@@ -45,9 +45,9 @@ public class Money
         sum.cents = this.cents + otherAmount.cents;
         long carryDollars = sum.cents / 100;
         sum.cents = sum.cents % 100;
-        sum.dollars = this.dollars +
-                otherAmount.dollars +
-                carryDollars;
+        sum.dollars = this.dollars + otherAmount.dollars + carryDollars;
+        System.out.println(sum.dollars);
+        System.out.println(sum.cents);
         return sum;
     }
     /**
