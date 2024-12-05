@@ -1,5 +1,6 @@
 package org.example;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Library {
@@ -23,17 +24,24 @@ public class Library {
 
         // Creating clone of Library lib
         Library clone = new Library(lib);
-        System.out.println("Creating clone...");
+        System.out.println("[Creating clone...]");
 
         // Checking the Library.equals() method (should return true)
         System.out.println("Clone is equal to original: "+lib.equals(clone));
 
         // Change the clone's isbn to an isbn-13 instead of an isbn-10
         clone.books.get(0).isbn = "123-222-3-2112-3-1";
-        System.out.println("Changing clone's isbn...");
+        System.out.println("[Changing clone's isbn...]");
 
         // Checking the Library.equals() method (should return false)
-        System.out.println(lib.equals(clone));
+        System.out.println("CLone is equal to original: "+lib.equals(clone));
+
+        // Making lib equal to clone again using a setter method
+        System.out.println("[Making lib books equal to clone books...]");
+        lib.setBooks(clone.books);
+
+        // Checking if lib and clone are equal again (should return true)
+        System.out.println("Lib books are equal to clone books: "+lib.equals(clone));
 
     }
 
@@ -81,7 +89,7 @@ public class Library {
         String output = "{";
 
         for (int i = 0; i <= books.size()-1; i++) {
-            output += books.get(i).title;
+            output += books.get(i).getTitle();
             if (i != books.size()-1) {
                 output += ", ";
             } else {
@@ -99,7 +107,11 @@ public class Library {
 
     // Setter Methods
     public void setBooks(ArrayList<Book> books){
-        this.books = books;
+        ArrayList<Book> newBooks = new ArrayList<Book>();
+        for (int i = 0; i < books.size(); i++) {
+            newBooks.add(books.get(i).clone());
+        }
+        this.books = newBooks;
     }
 
 }
